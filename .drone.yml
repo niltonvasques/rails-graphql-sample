@@ -1,0 +1,38 @@
+# The build process has two steps. 
+#   1. The first is the code review, where analyzers will check code quality 
+#     and report status to github
+#   2. The second step will run all automated tests and report results to github
+build:
+  code_review:
+    image: phusion/passenger-ruby23:0.9.19
+    commands: 
+      - apt-get update && apt-get install -y cmake pkg-config nodejs
+      - git fetch origin master
+      - bundle install --path /drone/gems -j 5 --retry 4
+      - PULL_REQUEST_ID=$DRONE_PULL_REQUEST bundle exec pronto run -f github_pr github_status -c origin/master -r rubocop brakeman fasterer
+      - PULL_REQUEST_ID=$DRONE_PULL_REQUEST bundle exec pronto run -f github_pr -c origin/master -r flay
+    environment:
+      GITHUB_ACCESS_TOKEN: $$GITHUB_ACCESS_TOKEN
+      GITHUB_SLUG: niltonvasques/crossover-ticket-system
+      RAILS_ENV: test
+  test:
+    image: phusion/passenger-ruby23:0.9.19
+    commands:
+      - apt-get update && apt-get install -y libmysqlclient-dev imagemagick zlib1g-dev libmagic-dev cmake pkg-config --no-install-recommends
+      - bundle install --path /drone/gems -j 5 --retry 4
+      - bundle show execjs
+      - rake db:create db:migrate db:seed 
+      - RAILS_ENV=production rake db:create db:migrate db:seed assets:precompile assets:clobber -v
+      - bundle exec rspec
+    environment:
+      MYSQL_ROOT_PASSWORD: ticket-system-pwd 
+      MYSQL_HOST: 127.0.0.1
+      RAILS_ENV: test
+cache:
+  mount:
+    - /drone/gems
+compose:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: ticket-system-pwd 

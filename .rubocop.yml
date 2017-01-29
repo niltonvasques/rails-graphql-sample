@@ -1,0 +1,45 @@
+#RAILS DEFAULT CONFIG
+AllCops:
+  TargetRubyVersion: 2.2
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - 'db/schema.rb'
+
+# Rubocop configuration file
+Metrics/LineLength:
+  Max: 100
+
+Metrics/AbcSize:
+  Enabled: false 
+
+Metrics/MethodLength:
+  Max: 15
+  Exclude:
+    - 'db/migrate/*'
+
+Metrics/ClassLength:
+  Max: 120
+
+Style/AndOr:
+  Exclude:
+    - '**/*'
+
+Style/Not:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
+Rails/Output:
+  Exclude:
+    - 'lib/import_prices.rb'
+#Style/GlobalVars:
+#  Exclude:
