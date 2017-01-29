@@ -46,6 +46,12 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  gem 'pronto'
+  gem 'pronto-flay' # Analyze code replication
+  gem 'pronto-rubocop' # Analyze code style and bad smells
+  gem 'pronto-brakeman' # Analyze security issues
+  gem 'pronto-fasterer' # Analyze performance issues
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
