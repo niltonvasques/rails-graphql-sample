@@ -26,7 +26,8 @@ class User < ActiveRecord::Base
 
   def sign_out
     if signed_in?
-      unset(:token)
+      erase_token
+      save!
     else
       false
     end
@@ -55,5 +56,9 @@ class User < ActiveRecord::Base
   def generate_token
     # pseudo random numbers with 16 bits has almost zero chance of have collisions
     self.token = SecureRandom.urlsafe_base64(16)
+  end
+
+  def erase_token
+    self.token = nil
   end
 end
