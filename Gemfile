@@ -40,6 +40,7 @@ end
 group :test do
   gem 'shoulda-matchers', '~> 3.1'
   gem 'rspec-mocks' # for rspec-mocks only
+  gem 'database_cleaner', '~> 1.5.3'
 
   # Test coverage gems
   gem 'simplecov', require: false

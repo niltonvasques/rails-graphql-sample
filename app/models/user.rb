@@ -14,6 +14,28 @@ class User < ActiveRecord::Base
   validate :customer_cant_be_agent
   validate :customer_cant_be_admin
 
+  def sign_in(password)
+    # Only generate token if the user isn't signed in
+    if authenticate(password)
+      generate_token unless signed_in?
+      save!
+      return true
+    end
+    false
+  end
+
+  def sign_out
+    if signed_in?
+      unset(:token)
+    else
+      false
+    end
+  end
+
+  def signed_in?
+    not token.nil?
+  end
+
   private
 
   def customer_cant_be_agent
@@ -28,5 +50,10 @@ class User < ActiveRecord::Base
       errors.add(:customer, :cant_be_admin)
       errors.add(:admin, :cant_be_customer)
     end
+  end
+
+  def generate_token
+    # pseudo random numbers with 16 bits has almost zero chance of have collisions
+    self.token = SecureRandom.urlsafe_base64(16)
   end
 end

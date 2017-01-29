@@ -42,4 +42,51 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_at_least(1).error_on(:admin) }
     it { is_expected.to have_at_least(1).error_on(:customer) }
   end
+
+  describe 'with an user' do
+    before do
+      @user = build_stubbed(:user)
+      allow(@user).to receive(:save!)
+    end
+
+    describe 'and try authenticate' do
+      describe 'with valid password' do
+        before { @user.sign_in('foobar') }
+
+        it { expect(@user.token).to_not be_nil }
+        it { expect(@user).to be_signed_in }
+
+        describe 'and try authenticate again' do
+          before do
+            @old_token = @user.token
+            @user.sign_in('foobar')
+          end
+          it { expect(@user.token).to be_eql(@old_token) }
+          it { expect(@user.sign_in('wrong')).to be_falsey }
+        end
+      end
+
+      describe 'with invalid password' do
+        before { @user.sign_in('wrong') }
+
+        it { expect(@user.token).to be_nil }
+        it { expect(@user).to_not be_signed_in }
+      end
+    end
+
+    describe 'when try sign_out' do
+      describe 'and is signed in' do
+        before do
+          @user.sign_in('foobar')
+          @user.sign_out
+        end
+
+        it { expect(@user.token).to be_nil }
+        it { expect(@user).to_not be_signed_in }
+      end
+      describe 'and is not signed in' do
+        it { expect(@user.sign_out).to be_falsey }
+      end
+    end
+  end
 end
