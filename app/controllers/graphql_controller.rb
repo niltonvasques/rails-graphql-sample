@@ -5,7 +5,19 @@ class GraphqlController < ApplicationController
     context = {
       current_user: current_user
     }
-    result = Schema.execute(params[:query], context: context)
+
+    variables = {}
+    if params[:variables]
+      variables = JSON.parse(params[:variables])
+    end
+
+    result = Schema.execute(
+      params[:query], 
+      variables: variables,
+      context: {
+        current_user: current_user
+      }
+    )
     render json: result
   end
 end

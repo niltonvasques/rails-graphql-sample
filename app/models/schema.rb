@@ -26,8 +26,47 @@ QueryType = GraphQL::ObjectType.define do
   field :users, types[UserType] do
     resolve -> (obj, args, ctx) { User.all }
   end
+
+  field :user do
+    type UserType
+    argument :id, !types.ID
+    description "Find a user by id"
+    resolve -> (obj, args, ctx) { User.find_by(args['id']) }
+  end
+end
+
+RegisterUserMutation = GraphQL::Relay::Mutation.define do
+  # Used to name derived types, eg `"AddCommentInput"`:
+  name "RegisterUser"
+
+  # Accessible from `input` in the resolve function:
+  input_field :name, !types.ID
+  input_field :email, !types.ID
+  input_field :password, !types.String
+  input_field :password_confirmation, !types.String
+
+  # The result has access to these fields,
+  # resolve must return a hash with these keys
+  return_field :user, UserType
+
+  # The resolve proc is where you alter the system state.
+  resolve ->(inputs, ctx) {
+    user = User.create!(name: inputs[:name], email: inputs[:email], password: inputs[:password], 
+                        password_confirmation: inputs[:password_confirmation])
+    {
+      user: user
+    }
+  }
+end
+
+# Define the mutation type
+MutationType = GraphQL::ObjectType.define do
+  name "Mutation"
+
+  field :registerUser, field: RegisterUserMutation.field
 end
 
 Schema = GraphQL::Schema.define do
   query QueryType
+  mutation MutationType
 end
