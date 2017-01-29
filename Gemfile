@@ -31,12 +31,16 @@ group :development, :test do
 
   # Use RSpec for specs
   gem 'rspec-rails', '>= 3.5.0'
+  gem 'rspec-collection_matchers'
 
   # Use Factory Girl for generating random test data
   gem 'factory_girl_rails'
 end
 
 group :test do
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'rspec-mocks' # for rspec-mocks only
+
   # Test coverage gems
   gem 'simplecov', require: false
 end
