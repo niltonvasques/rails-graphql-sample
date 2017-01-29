@@ -3,8 +3,8 @@ class CreateUser < ActiveRecord::Migration[5.0]
     create_table :users do |t|
       t.string :name
       t.string :email
-      t.string :encrypted_password
-      t.string :remember_token
+      t.string :password_digest
+      t.string :token
       t.boolean :customer, default: true
       t.boolean :agent, default: false
       t.boolean :admin, default: false

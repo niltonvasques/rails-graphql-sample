@@ -1,9 +1,15 @@
 class User < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
+  include ActiveModel::SecurePassword
+  has_secure_password
 
+  # Validations
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
-                    uniqueness: { case_sensitive: false }
   validates :name, presence: true
+  validates :email, presence: true,
+                    format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: { case_sensitive: false }
+  validates :password_digest, presence: true
 
   validate :customer_cant_be_agent
   validate :customer_cant_be_admin

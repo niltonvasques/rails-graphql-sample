@@ -9,8 +9,8 @@ RSpec.describe User, type: :model do
   it { is_expected.to respond_to(:email) }
   it { is_expected.to respond_to(:created_at) }
   it { is_expected.to respond_to(:updated_at) }
-  it { is_expected.to respond_to(:encrypted_password) }
-  it { is_expected.to respond_to(:remember_token) }
+  it { is_expected.to respond_to(:password_digest) }
+  it { is_expected.to respond_to(:token) }
   it { is_expected.to respond_to(:customer?) }
   it { is_expected.to respond_to(:agent?) }
 
@@ -23,6 +23,12 @@ RSpec.describe User, type: :model do
   describe 'when email is invalid' do
     before { user.email = 'ze' }
     it { is_expected.to have_at_least(1).error_on(:email) }
+  end
+
+  # Validations
+  describe 'when password_digest is not present' do
+    before { user.password_digest = nil }
+    it { is_expected.to have_at_least(1).error_on(:password_digest) }
   end
 
   describe 'when a customer is an agent' do
