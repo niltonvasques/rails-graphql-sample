@@ -11,7 +11,6 @@ RSpec.describe User, type: :model do
   it { is_expected.to respond_to(:updated_at) }
   it { is_expected.to respond_to(:encrypted_password) }
   it { is_expected.to respond_to(:remember_token) }
-  it { is_expected.to respond_to(:confirmation_token) }
   it { is_expected.to respond_to(:customer?) }
   it { is_expected.to respond_to(:agent?) }
 
