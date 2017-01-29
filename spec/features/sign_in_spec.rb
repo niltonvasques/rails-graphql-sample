@@ -42,7 +42,7 @@ EOF
       describe 'with bad credentials' do
         before do
           @expected = {
-            error: 'Bad credentials' 
+            error: 'Bad credentials'
           }
           @password = 'wrong'
           sign_in
