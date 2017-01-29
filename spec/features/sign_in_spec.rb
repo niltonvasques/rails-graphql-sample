@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe GraphqlController, type: :controller do
   context 'create' do
     let(:credentials) do
-      { email: @user.email, password: 'foobar' }
+      { email: @user.email, password: @password }
     end
 
     let(:sign_in) do
@@ -21,18 +21,34 @@ EOF
     describe 'when try sign in' do
       before do
         @user = create(:user)
-        @user.sign_in('foobar')
+        @password = 'foobar'
+      end
+      describe 'with good credentials' do
+        before do
+          @user.sign_in(@password)
 
-        @expected = {
-          data: {
-            signIn: {
-              token: @user.token
+          @expected = {
+            data: {
+              signIn: {
+                token: @user.token
+              }
             }
           }
-        }
-        sign_in
+          sign_in
+        end
+        it { expect(response.body).to be_eql @expected.to_json }
       end
-      it { expect(response.body).to be_eql @expected.to_json }
+
+      describe 'with bad credentials' do
+        before do
+          @expected = {
+            error: 'Bad credentials' 
+          }
+          @password = 'wrong'
+          sign_in
+        end
+        it { expect(response.body).to be_eql @expected.to_json }
+      end
     end
   end
 end
