@@ -59,10 +59,10 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   gem 'pronto'
-  gem 'pronto-flay' # Analyze code replication
-  gem 'pronto-rubocop' # Analyze code style and bad smells
-  gem 'pronto-brakeman' # Analyze security issues
-  gem 'pronto-fasterer' # Analyze performance issues
+  gem 'pronto-flay', require: false # Analyze code replication
+  gem 'pronto-rubocop', require: false # Analyze code style and bad smells
+  gem 'pronto-brakeman', require: false # Analyze security issues
+  gem 'pronto-fasterer', require: false # Analyze performance issues
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
