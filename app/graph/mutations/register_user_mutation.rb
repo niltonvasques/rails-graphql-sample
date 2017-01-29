@@ -1,6 +1,6 @@
 RegisterUserMutation = GraphQL::Relay::Mutation.define do
   # Used to name derived types, eg `"AddCommentInput"`:
-  name "RegisterUser"
+  name 'RegisterUser'
 
   # Accessible from `input` in the resolve function:
   input_field :name, !types.ID
@@ -13,8 +13,8 @@ RegisterUserMutation = GraphQL::Relay::Mutation.define do
   return_field :user, UserType
 
   # The resolve proc is where you alter the system state.
-  resolve ->(inputs, ctx) {
-    user = User.create!(name: inputs[:name], email: inputs[:email], password: inputs[:password], 
+  resolve lambda { |inputs, _ctx|
+    user = User.create!(name: inputs[:name], email: inputs[:email], password: inputs[:password],
                         password_confirmation: inputs[:password_confirmation])
     {
       user: user

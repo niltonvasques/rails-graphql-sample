@@ -1,6 +1,6 @@
 SignInMutation = GraphQL::Relay::Mutation.define do
-  # Used to name derived types, eg `"AddCommentInput"`:
-  name "SignIn"
+  # Used to name derived types, eg `'AddCommentInput'`:
+  name 'SignIn'
 
   # Accessible from `input` in the resolve function:
   input_field :email, !types.ID
@@ -11,14 +11,13 @@ SignInMutation = GraphQL::Relay::Mutation.define do
   return_field :token, !types.String
 
   # The resolve proc is where you alter the system state.
-  resolve ->(inputs, ctx) {
+  resolve lambda { |inputs, _ctx|
     user = User.find_by(email: inputs[:email])
-    if user.sign_in(inputs[:password])
-      {
-        token: user.token
-      }
-    else
-      raise "Bad credentials"
-    end
+
+    raise 'Bad credentials' unless user.sign_in(inputs[:password])
+
+    {
+      token: user.token
+    }
   }
 end

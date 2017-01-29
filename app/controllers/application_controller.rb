@@ -1,7 +1,5 @@
 class ApplicationController < ActionController::API
   include ActionController::HttpAuthentication::Token::ControllerMethods
-  #self.responder = ApplicationResponder
-  #respond_to :json
 
   # Rescue from any error with internal server code
   rescue_from StandardError do |e|
@@ -25,12 +23,12 @@ class ApplicationController < ActionController::API
   end
 
   def authenticate_token
-    authenticate_with_http_token do |token, options|
+    authenticate_with_http_token do |token, _options|
       @current_user = User.find_by(token: token)
     end
   end
 
-  def render_unauthorized(realm = "Application")
+  def render_unauthorized(realm = 'Application')
     # self.headers["WWW-Authenticate"] = %(Token realm="#{realm.gsub(/"/, "")}")
     # render json: { error: 'Bad credentials' }, status: :unauthorized
   end

@@ -7,9 +7,9 @@ RSpec.describe GraphqlController, type: :controller do
     end
 
     let(:register_user) do
-      mutation =<<EOF
+      mutation = <<EOF
         mutation registerUser($input: RegisterUserInput!) {
-          registerUser(input: $input) { 
+          registerUser(input: $input) {
             user { id, name, email }
           }
         }
@@ -27,9 +27,9 @@ EOF
             data: {
               registerUser: {
                 user: {
-                  id: "1",
+                  id: '1',
                   name: user[:name],
-                  email: user[:email],
+                  email: user[:email]
                 }
               }
             }

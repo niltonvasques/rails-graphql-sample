@@ -40,17 +40,15 @@ class User < ActiveRecord::Base
   private
 
   def customer_cant_be_agent
-    if customer? and agent?
-      errors.add(:customer, :cant_be_agent)
-      errors.add(:agent, :cant_be_customer)
-    end
+    return unless customer? and agent?
+    errors.add(:customer, :cant_be_agent)
+    errors.add(:agent, :cant_be_customer)
   end
 
   def customer_cant_be_admin
-    if customer? and admin?
-      errors.add(:customer, :cant_be_admin)
-      errors.add(:admin, :cant_be_customer)
-    end
+    return unless customer? and admin?
+    errors.add(:customer, :cant_be_admin)
+    errors.add(:admin, :cant_be_customer)
   end
 
   def generate_token

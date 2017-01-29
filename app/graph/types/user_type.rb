@@ -10,4 +10,3 @@ UserType = GraphQL::ObjectType.define do
   field :created_at, !types.String, 'User creation date'
   field :updated_at, !types.String, 'User update date'
 end
-
