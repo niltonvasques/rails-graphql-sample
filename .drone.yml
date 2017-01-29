@@ -18,7 +18,7 @@ build:
   test:
     image: phusion/passenger-ruby23:0.9.19
     commands:
-      - apt-get update && apt-get install -y libmysqlclient-dev imagemagick zlib1g-dev libmagic-dev cmake pkg-config --no-install-recommends
+      - apt-get update && apt-get install -y libmysqlclient-dev imagemagick zlib1g-dev libmagic-dev cmake pkg-config nodejs --no-install-recommends
       - bundle install --path /drone/gems -j 5 --retry 4
       - bundle show execjs
       - rake db:create db:migrate db:seed 
