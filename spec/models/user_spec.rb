@@ -30,4 +30,10 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_at_least(1).error_on(:customer) }
     it { is_expected.to have_at_least(1).error_on(:agent) }
   end
+
+  describe 'when a customer is an admin' do
+    before { user.customer = user.admin = true }
+    it { is_expected.to have_at_least(1).error_on(:admin) }
+    it { is_expected.to have_at_least(1).error_on(:customer) }
+  end
 end
