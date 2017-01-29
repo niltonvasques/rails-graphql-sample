@@ -4,9 +4,6 @@ module AuthHelper
   end
 
   def current_user
-    if !@current_user and params[:token]
-      @current_user = User.where(token: params[:token]).first
-    end
     @current_user
   end
 
