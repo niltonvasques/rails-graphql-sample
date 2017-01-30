@@ -23,6 +23,17 @@ QueryType = GraphQL::ObjectType.define do
     description 'Find a user by id'
     resolve ->(_obj, args, _ctx) { User.find_by(args['id']) }
   end
+
+  field :requests, types[RequestType] do
+    resolve ->(_obj, _args, _ctx) { Request.all }
+  end
+
+  field :request do
+    type RequestType
+    argument :id, !types.ID
+    description 'Find a request by id'
+    resolve ->(_obj, args, _ctx) { Request.find_by(args['id']) }
+  end
 end
 
 # Define the mutation type
