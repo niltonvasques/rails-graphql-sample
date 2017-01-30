@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   include ActiveModel::ForbiddenAttributesProtection
   include ActiveModel::SecurePassword
   has_secure_password
