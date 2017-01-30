@@ -18,7 +18,7 @@ EOF
       post :query, params: { query: mutation, variables: variables }, format: :json
     end
 
-    describe 'when try register a agent' do
+    describe 'when try create a request' do
       before { @user = sign_in_as_customer }
 
       it { expect { create_request }.to change(Request, :count).by(1) }
@@ -32,7 +32,7 @@ EOF
                   id: '1',
                   title: request[:title],
                   content: request[:content],
-                  user: { id: @user.id.to_s } 
+                  user: { id: @user.id.to_s }
                 }
               }
             }
