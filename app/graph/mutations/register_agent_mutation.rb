@@ -1,6 +1,6 @@
 def create_authorized_mutation(admin, agent)
   GraphQL::Relay::Mutation.define do
-    name "Register#{ admin ? 'Admin' : 'Agent' }"
+    name "Register#{admin ? 'Admin' : 'Agent'}"
 
     input_field :name, !types.ID
     input_field :email, !types.ID
@@ -16,9 +16,7 @@ def create_authorized_mutation(admin, agent)
       agent = User.create!(name: inputs[:name], email: inputs[:email], password: inputs[:password],
                            password_confirmation: inputs[:password_confirmation],
                            agent: agent, customer: false, admin: admin)
-      {
-        agent: agent
-      }
+      { agent: agent }
     }
   end
 end
