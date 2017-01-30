@@ -30,6 +30,7 @@ MutationType = GraphQL::ObjectType.define do
   name 'Mutation'
 
   field :registerUser, field: RegisterUserMutation.field
+  field :registerAgent, field: RegisterAgentMutation.field
   field :signIn, field: SignInMutation.field
   field :signOut, field: SignOutMutation.field
 end
