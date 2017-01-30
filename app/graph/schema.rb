@@ -29,11 +29,15 @@ end
 MutationType = GraphQL::ObjectType.define do
   name 'Mutation'
 
+  # Auth mutations
   field :registerUser, field: RegisterUserMutation.field
   field :registerAgent, field: RegisterAgentMutation.field
   field :registerAdmin, field: RegisterAdminMutation.field
   field :signIn, field: SignInMutation.field
   field :signOut, field: SignOutMutation.field
+
+  # Request mutations
+  field :createRequest, field: CreateRequestMutation.field
 end
 
 Schema = GraphQL::Schema.define do
