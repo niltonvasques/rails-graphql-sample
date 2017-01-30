@@ -15,7 +15,7 @@ RSpec.describe GraphqlController, type: :controller do
             requests: [{
               id: requests.first.id.to_s,
               title: requests.first.title,
-              content: requests.first.content,
+              content: requests.first.content
             }]
           }
         }
