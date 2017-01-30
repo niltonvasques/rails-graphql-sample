@@ -34,7 +34,7 @@ EOF
                   email: user[:email],
                   customer: false,
                   agent: true,
-                  admin: false,
+                  admin: false
                 }
               }
             }

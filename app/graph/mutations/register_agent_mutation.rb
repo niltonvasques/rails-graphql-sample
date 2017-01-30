@@ -10,8 +10,7 @@ RegisterAgentMutation = GraphQL::Relay::Mutation.define do
 
   # The resolve proc is where you alter the system state.
   resolve lambda { |inputs, ctx|
-
-    raise "Unauthorized" unless ctx[:current_user] and ctx[:current_user].admin?
+    raise 'Unauthorized' unless ctx[:current_user] and ctx[:current_user].admin?
 
     agent = User.create!(name: inputs[:name], email: inputs[:email], password: inputs[:password],
                          password_confirmation: inputs[:password_confirmation],
