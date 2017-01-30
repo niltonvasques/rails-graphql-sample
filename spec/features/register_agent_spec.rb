@@ -10,10 +10,10 @@ RSpec.describe GraphqlController, type: :controller do
       }
     }
 EOF
-  input = { name: 'test', email: 'test@test.com', password: '123456', 
+  input = { name: 'test', email: 'test@test.com', password: '123456',
             password_confirmation: '123456' }
 
-  expected = { 
+  expected = {
     registerAgent: {
       agent: {
         id: '1',

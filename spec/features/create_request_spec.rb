@@ -11,13 +11,13 @@ RSpec.describe GraphqlController, type: :controller do
     }
 EOF
   input = { title: 'title', content: 'content' }
-  expected = { 
+  expected = {
     createRequest: {
       request: {
         id: '1',
         title: input[:title],
         content: input[:content],
-        user: { id: "1002" }
+        user: { id: '1002' }
       }
     }
   }
