@@ -18,4 +18,9 @@ RSpec.describe Request, type: :model do
       it { is_expected.to have_at_least(1).error_on(field.to_sym) }
     end
   end
+
+  describe 'when the user is a non customer' do
+    before { request.user = build_stubbed(:user, customer: false, agent: true) }
+    it { is_expected.to have_at_least(1).error_on(:user) }
+  end
 end
