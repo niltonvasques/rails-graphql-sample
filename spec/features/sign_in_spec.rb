@@ -10,7 +10,7 @@ RSpec.describe GraphqlController, type: :controller do
       mutation = <<EOF
         mutation signIn($input: SignInInput!) {
           signIn(input: $input) {
-            token
+            data { token, user { id } }
           }
         }
 EOF
@@ -30,7 +30,12 @@ EOF
           @expected = {
             data: {
               signIn: {
-                token: @user.token
+                data: {
+                  token: @user.token,
+                  user: {
+                    id: @user.id.to_s
+                  }
+                }
               }
             }
           }

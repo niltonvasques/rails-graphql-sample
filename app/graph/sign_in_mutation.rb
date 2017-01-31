@@ -3,12 +3,11 @@ SignInType = GraphQL::ObjectType.define do
   description 'Sign in result'
 
   field :token, !types.String do
-    resolve ->(obj, args, ctx) { obj[:token] }
+    resolve ->(obj, _args, _ctx) { obj[:token] }
   end
   field :user, UserType do
-    resolve ->(obj, args, ctx) { obj[:user] }
+    resolve ->(obj, _args, _ctx) { obj[:user] }
   end
-
 end
 
 SignInMutation = GraphQL::Relay::Mutation.define do
