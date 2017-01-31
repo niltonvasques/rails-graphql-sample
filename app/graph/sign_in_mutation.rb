@@ -1,3 +1,16 @@
+SignInType = GraphQL::ObjectType.define do
+  name 'Sign In'
+  description 'Sign in result'
+
+  field :token, !types.String do
+    resolve ->(obj, args, ctx) { obj[:token] }
+  end
+  field :user, UserType do
+    resolve ->(obj, args, ctx) { obj[:user] }
+  end
+
+end
+
 SignInMutation = GraphQL::Relay::Mutation.define do
   # Used to name derived types, eg `'AddCommentInput'`:
   name 'SignIn'
@@ -8,7 +21,7 @@ SignInMutation = GraphQL::Relay::Mutation.define do
 
   # The result has access to these fields,
   # resolve must return a hash with these keys
-  return_field :token, !types.String
+  return_field :data, SignInType
 
   # The resolve proc is where you alter the system state.
   resolve lambda { |inputs, _ctx|
@@ -17,7 +30,10 @@ SignInMutation = GraphQL::Relay::Mutation.define do
     raise 'Bad credentials' unless user.sign_in(inputs[:password])
 
     {
-      token: user.token
+      data: {
+        token: user.token,
+        user: user
+      }
     }
   }
 end
