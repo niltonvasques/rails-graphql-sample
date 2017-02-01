@@ -11,7 +11,8 @@ CloseRequestMutation = GraphQL::Relay::Mutation.define do
 
     request = Request.find(inputs[:id].to_i)
 
-    raise 'Unauthorized' if !ctx[:current_user].agent? and request.user_id != ctx[:current_user].id
+    # Only agents or user that create request should close request
+    raise 'Unauthorized' unless AuthorizationHelper.can_edit_request(request, ctx[:current_user])
 
     request.update(open: false)
 

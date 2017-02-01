@@ -14,10 +14,10 @@ AddCommentMutation = GraphQL::Relay::Mutation.define do
     request = Request.find(inputs[:request_id])
 
     # Only agents or user that create request should comment
-    raise 'Unauthorized' if !ctx[:current_user].agent? and request.user_id != ctx[:current_user].id
+    raise 'Unauthorized' unless AuthorizationHelper.can_edit_request(request, ctx[:current_user])
 
     comment = request.comments.create!(title: inputs[:title], comment: inputs[:comment],
-                              user: ctx[:current_user])
+                                       user: ctx[:current_user])
 
     { comment: comment }
   }
