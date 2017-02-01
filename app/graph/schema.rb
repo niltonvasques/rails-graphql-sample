@@ -21,7 +21,7 @@ QueryType = GraphQL::ObjectType.define do
     type UserType
     argument :id, !types.ID
     description 'Find a user by id'
-    resolve ->(_obj, args, _ctx) { User.find_by(args['id']) }
+    resolve ->(_obj, args, _ctx) { User.find(args['id']) }
   end
 
   field :requests, types[RequestType] do
@@ -32,7 +32,7 @@ QueryType = GraphQL::ObjectType.define do
     type RequestType
     argument :id, !types.ID
     description 'Find a request by id'
-    resolve ->(_obj, args, _ctx) { Request.find_by(args['id']) }
+    resolve ->(_obj, args, _ctx) { Request.find(args['id']) }
   end
 end
 
@@ -50,6 +50,7 @@ MutationType = GraphQL::ObjectType.define do
   # Request mutations
   field :createRequest, field: CreateRequestMutation.field
   field :closeRequest, field: CloseRequestMutation.field
+  field :addComment, field: AddCommentMutation.field
 end
 
 Schema = GraphQL::Schema.define do

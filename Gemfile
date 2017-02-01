@@ -22,6 +22,8 @@ gem 'bcrypt', '~> 3.1.7'
 # GraphQL
 gem 'graphql'
 
+gem 'acts_as_commentable'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
