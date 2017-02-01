@@ -10,14 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170130022622) do
+ActiveRecord::Schema.define(version: 20170131234729) do
 
   create_table "requests", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.boolean  "open",       default: true
     t.index ["title"], name: "index_requests_on_title"
     t.index ["user_id"], name: "index_requests_on_user_id"
   end

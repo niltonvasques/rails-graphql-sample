@@ -8,5 +8,6 @@ FactoryGirl.define do
       "content #{n}"
     end
     user
+    open true
   end
 end

@@ -17,7 +17,7 @@ EOF
         id: '1',
         title: input[:title],
         content: input[:content],
-        user: { id: '1002' }
+        user: { id: '1004' }
       }
     }
   }
