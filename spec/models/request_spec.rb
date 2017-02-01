@@ -8,6 +8,7 @@ RSpec.describe Request, type: :model do
   it { is_expected.to respond_to(:title) }
   it { is_expected.to respond_to(:content) }
   it { is_expected.to respond_to(:user_id) }
+  it { is_expected.to respond_to(:open) }
   it { is_expected.to respond_to(:created_at) }
   it { is_expected.to respond_to(:updated_at) }
 

@@ -49,6 +49,7 @@ MutationType = GraphQL::ObjectType.define do
 
   # Request mutations
   field :createRequest, field: CreateRequestMutation.field
+  field :closeRequest, field: CloseRequestMutation.field
 end
 
 Schema = GraphQL::Schema.define do
