@@ -8,4 +8,7 @@ RequestType = GraphQL::ObjectType.define do
   field :open, !types.Boolean, 'Open'
   field :created_at, !types.String, 'User creation date'
   field :updated_at, !types.String, 'User update date'
+  field :comments, types[CommentType] do
+    resolve ->(obj, _args, _ctx) { obj.comments }
+  end
 end
