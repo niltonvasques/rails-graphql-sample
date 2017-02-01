@@ -3,6 +3,8 @@ class User < ApplicationRecord
   include ActiveModel::SecurePassword
   has_secure_password
 
+  has_many :requests
+
   # Validations
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :name, presence: true

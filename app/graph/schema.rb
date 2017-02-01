@@ -25,14 +25,26 @@ QueryType = GraphQL::ObjectType.define do
   end
 
   field :requests, types[RequestType] do
-    resolve ->(_obj, _args, _ctx) { Request.all }
+    resolve lambda { |_obj, _args, ctx|
+      raise 'Unauthorized' unless ctx[:current_user]
+
+      return ctx[:current_user].requests if ctx[:current_user].customer?
+
+      Request.all
+    }
   end
 
   field :request do
     type RequestType
     argument :id, !types.ID
     description 'Find a request by id'
-    resolve ->(_obj, args, _ctx) { Request.find(args['id']) }
+    resolve lambda { |_obj, args, ctx|
+      raise 'Unauthorized' unless ctx[:current_user]
+
+      return ctx[:current_user].requests.find(args['id']) if ctx[:current_user].customer?
+
+      Request.find(args['id'])
+    }
   end
 end
 

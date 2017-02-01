@@ -8,6 +8,7 @@ RSpec.describe GraphqlController, type: :controller do
     end
     describe 'with good credentials' do
       before do
+        sign_in_as_admin
         requests = [build_stubbed(:request)]
         allow(Request).to receive(:all).and_return(requests)
         @expected = {
