@@ -1,7 +1,7 @@
 # CrossOver Ticket System Challenge
 
 [![Build Status](http://drone.niltonvasques.com.br/api/badges/niltonvasques/pms-rails/status.svg)](http://drone.niltonvasques.com.br/niltonvasques/crossover-ticket-system)
-[![codecov](https://codecov.io/gh/niltonvasques/pms-rails/branch/master/graph/badge.svg?token=119Yhv8peG)](https://codecov.io/gh/niltonvasques/pms-rails)
+[![Coverage](https://img.shields.io/badge/coverage-97%25-brightgreen.svg)](https://img.shields.io/badge/coverage-97%25-brightgreen.svg)
 
 ### Setup
 
