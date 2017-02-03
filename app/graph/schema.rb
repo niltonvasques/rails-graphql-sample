@@ -38,7 +38,7 @@ QueryType = GraphQL::ObjectType.define do
     resolve lambda { |_obj, _args, ctx|
       raise 'Unauthorized' if !ctx[:current_user] or !ctx[:current_user].agent?
 
-      Request.where("updated_at > ? AND updated_at < ?", Time.now - 1.month, Time.now)
+      Request.where('updated_at > ? AND updated_at < ?', Time.now - 1.month, Time.now)
              .where(open: false)
     }
   end

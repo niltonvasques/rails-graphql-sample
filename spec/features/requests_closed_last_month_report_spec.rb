@@ -10,7 +10,7 @@ RSpec.describe GraphqlController, type: :controller do
       before do
         sign_in_as_admin
         requests = [build_stubbed(:request)]
-        allow(Request).to receive_message_chain(:where, :where){ requests }
+        allow(Request).to receive_message_chain(:where, :where) { requests }
         @expected = {
           data: {
             reportRequestsClosedInLastMonth: [{
