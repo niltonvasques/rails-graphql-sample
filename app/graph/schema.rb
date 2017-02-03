@@ -65,11 +65,13 @@ MutationType = GraphQL::ObjectType.define do
   field :registerUser, field: RegisterUserMutation.field
   field :registerAgent, field: RegisterAgentMutation.field
   field :registerAdmin, field: RegisterAdminMutation.field
+  field :removeUser, field: RemoveUserMutation.field
   field :signIn, field: SignInMutation.field
   field :signOut, field: SignOutMutation.field
 
   # Request mutations
   field :createRequest, field: CreateRequestMutation.field
+  field :removeRequest, field: RemoveRequestMutation.field
   field :closeRequest, field: CloseRequestMutation.field
   field :addComment, field: AddCommentMutation.field
 end
