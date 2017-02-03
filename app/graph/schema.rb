@@ -34,6 +34,15 @@ QueryType = GraphQL::ObjectType.define do
     }
   end
 
+  field :reportRequestsClosedInLastMonth, types[RequestType] do
+    resolve lambda { |_obj, _args, ctx|
+      raise 'Unauthorized' if !ctx[:current_user] or !ctx[:current_user].agent?
+
+      Request.where("updated_at > ? AND updated_at < ?", Time.now - 1.month, Time.now)
+             .where(open: false)
+    }
+  end
+
   field :request do
     type RequestType
     argument :id, !types.ID
