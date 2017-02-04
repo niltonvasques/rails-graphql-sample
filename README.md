@@ -143,6 +143,19 @@
 
 ![High Level Architecture](https://github.com/niltonvasques/crossover-ticket-system/blob/docs/docs/High%20Level%20Arquitecture.jpg)
 
+##### Explanation
+
+REST API's has a lot of issues very well known, like the multi request problem, that is when a client application need
+rebuild the information stored on server through multiple REST resource routes. Thus, the main reason to adopt a GraphQL 
+Query instead a REST API approach, was because GraphQL has a very elegant way to handle and solve REST issues, and probably 
+will be the default "way to go" for next years in backend development. Another less strong reason was for learning purposes,
+give a try to this new technology through the challenge (increasing a little bit the efforts) and see the results.
+
+The whole architecture can be splited in three points, the database; the GraphQL rails application; the hybrid frontend app.
+The MySQL database was choosed because it was in the requirements of the challenge, but also for have a strong and smoothly
+integration with Rails and Active Record. The rails application was created using the new API mode (`--api`), that has a
+minimal stack of Rails modules focused in serving JSON responses.
+
 #### Frontend Architecture
 
 ![Frontend Architecture](https://github.com/niltonvasques/crossover-ticket-system/blob/docs/docs/Frontend%20Arquitecture.jpg)
