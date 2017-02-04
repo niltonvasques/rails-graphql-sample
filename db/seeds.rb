@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+unless User.exists?(email: 'admin@ticketsystem.com')
+  User.create!(name: 'Admin',
+               email: 'admin@ticketsystem.com',
+               password: 'ticket@system2017',
+               password_confirmation: 'ticket@system2017',
+               customer: false,
+               agent: true,
+               admin: true)
+end

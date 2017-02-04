@@ -2,7 +2,7 @@ web:
   cpu_quota: 50000
   build: . 
 #  volumes:
-#    - /home/app/pms-rails/public
+#    - /home/app/ticket-system/public
   ports:
     - "5000:80"
     - "5443:443"

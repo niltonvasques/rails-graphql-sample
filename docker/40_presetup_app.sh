@@ -15,6 +15,7 @@ bundle exec rake db:migrate;
 if [ $RAILS_ENV = "test" ]; then
   bundle exec rake db:seed;
 fi
-#if [ $RAILS_ENV = "production" ]; then
-#fi
+if [ $RAILS_ENV = "production" ]; then
+  bundle exec rake db:seed;
+fi
 chown -R app:app .
