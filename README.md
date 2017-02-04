@@ -224,6 +224,11 @@ app/
 
 #### Run with docker
 
+    export MYSQL_ROOT_PASSWORD=somepass
+    export SECRET_KEY_BASE=ea615c8f1f9a136075a6711d185e45f96dbebea0db80f53373a2f1147ef8d8b28ca3051bb2e132d22178ad40212a43177930d94f2f7670c1f6301567e13aa19c
+    export HOST_URL=someurl.com
+    export RAILS_ENV=production
+
     docker-compose up --build
 
 #### Codestyle
