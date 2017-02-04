@@ -145,7 +145,7 @@
 
 ##### Explanation
 
-REST API's has a lot of issues very well known, like the multi request problem, that is when a client application need
+REST APIs have a lot of issues very well known, like the multi request problem, that is when a client application need
 rebuild the information stored on server through multiple REST resource routes. Thus, the main reason to adopt a GraphQL 
 Query instead a REST API approach, was because GraphQL has a very elegant way to handle and solve REST issues, and probably 
 will be the default "way to go" for next years in backend development. Another less strong reason was for learning purposes,
@@ -161,7 +161,7 @@ using a declarative approach with `graphql-ruby gem`, and holds all possible que
 mutations (create, remove and auth) of the application. The queries are intended to handle read only requests, whereas the
 mutations are responsible to change the data.
 
-The authorization mechanism was built by scratch, because the cannonical gems for that job (i.e. devise, clearance), not are
+Authorization mechanism was built by scratch, because the cannonical gems for that job (i.e. devise, clearance), not are
 built with focus on API mode only, and because that they have a lot of code using the html rendering stack of 
 a traditional rails app. Thus, the authorization approach used is very straightforward, and is done in two steps, a) sending
 a signIn mutation with user login (email, password); b) sending the auth token, that comes from signIn mutation, 
@@ -175,11 +175,41 @@ Cache-Control: no-cache
 Postman-Token: 5c90cf63-83b1-4b5c-c2e3-db4bd7ebea52
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 ```
-
-
 #### Frontend Architecture
 
 ![Frontend Architecture](https://github.com/niltonvasques/crossover-ticket-system/blob/docs/docs/Frontend%20Arquitecture.jpg)
+
+The main goal that I have in mind, when are thinking about the frontend archictecture, was design it in way that
+maximize the amount of code and logic, and minimize the efforts for build a hybrid app for web and mobile clients. Therefore,
+considering the recent advances in web development and the **Single Page Application pattern** that emerged in the last
+years and all the ecosystem that are arising around that, and my background experience, I have decide to use the **Redux** 
+to handle app state logic, by considering it to be easy and predictive approach for the job. In the client view layer, the
+**react-native** framework was used, because it provide a easy and very elegant way to build hybrid applications. By the way,
+the communication layer between the rails graphql api and the client app was assigned to awesome **apollo-client**, that has
+a strong integration with redux.
+
+React native view components was organized in way that allows we share almost all of them between web, android and in the
+future also IOS code. Since, this approach for build a frontend client is very new, and still don't have a solid and default
+organization of the modules, I decided to organize them in such way that increase the isolation between modules and thus
+increasing the single responsability too much as possible. The full organization is showed below:
+
+```
+app/
+├── components // shared components between web and mobile
+│   └── *.js
+├── constants // holds static variables
+│   └── *.js
+├── native // specific mobile components
+│   └── components
+│       └── *.js
+├── scenes // application pages
+│   └── *.js
+├── store // app state and communication layer
+│   └── *.js
+└── web // specific web components
+    └── components
+        └── *.js
+ ```
 
 #### Data Model
 
