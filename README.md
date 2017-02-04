@@ -141,7 +141,7 @@
 
 #### High Level Architecture
 
-![High Level Architecture](https://github.com/niltonvasques/crossover-ticket-system/blob/docs/docs/High%20Level%20Arquitecture.jpg)
+![High Level Architecture](https://github.com/niltonvasques/crossover-ticket-system/blob/docs/High%20Level%20Arquitecture.jpg)
 
 ##### Explanation
 
@@ -177,7 +177,7 @@ Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0g
 ```
 #### Frontend Architecture
 
-![Frontend Architecture](https://github.com/niltonvasques/crossover-ticket-system/blob/docs/docs/Frontend%20Arquitecture.jpg)
+![Frontend Architecture](https://github.com/niltonvasques/crossover-ticket-system/blob/docs/Frontend%20Arquitecture.jpg)
 
 The main goal that I have in mind, when are thinking about the frontend archictecture, was design it in way that
 maximize the amount of code and logic, and minimize the efforts for build a hybrid app for web and mobile clients. Therefore,
@@ -213,7 +213,7 @@ app/
 
 #### Data Model
 
-![Data model](https://github.com/niltonvasques/crossover-ticket-system/blob/docs/docs/Data%20Model.png)
+![Data model](https://github.com/niltonvasques/crossover-ticket-system/blob/docs/Data%20Model.png)
 
 ## Setup
 
@@ -276,8 +276,8 @@ List requests where $TOKEN comes from Authenticate step above
 
 ## Screenshots
 
-![Android Main scene](https://github.com/niltonvasques/crossover-ticket-system/blob/docs/docs/android%20main%20scene.png)
-![Web Main scene](https://github.com/niltonvasques/crossover-ticket-system/blob/docs/docs/web%20main%20scene.png)
-![Web Admin Panel](https://github.com/niltonvasques/crossover-ticket-system/blob/docs/docs/web%20admin%20panel.png)
-![Web Requests](https://github.com/niltonvasques/crossover-ticket-system/blob/docs/docs/admin%20request%203.png)
+![Android Main scene](https://github.com/niltonvasques/crossover-ticket-system/blob/docs/android%20main%20scene.png)
+![Web Main scene](https://github.com/niltonvasques/crossover-ticket-system/blob/docs/web%20main%20scene.png)
+![Web Admin Panel](https://github.com/niltonvasques/crossover-ticket-system/blob/docs/web%20admin%20panel.png)
+![Web Requests](https://github.com/niltonvasques/crossover-ticket-system/blob/docs/admin%20request%203.png)
 
