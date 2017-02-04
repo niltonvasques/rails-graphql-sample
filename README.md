@@ -230,6 +230,38 @@ app/
     export RAILS_ENV=production
 
     docker-compose up --build
+    
+Get docker IP
+
+    docker exec -it ticketsystem-web hostname -I # 172.17.0.2
+
+Try create a user
+    
+    curl --request POST --url http://172.17.0.3/graphql --header 'cache-control: no-cache' \
+         --header 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
+         --header 'postman-token: 7c56d213-4033-6315-3aac-c45af10e45d9' \
+         --form 'query=mutation registerUser($input: RegisterUserInput!) { registerUser(input: $input) { user { id, name, email } } }' \
+         --form 'variables={ "input": { "name": "John Doe", "email": "johndoe@test.com", "password": "123456", "password_confirmation": "insano00" } }'
+         
+Authenticate
+
+    curl --request POST \
+         --url http://172.17.0.3/graphql \
+         --header 'cache-control: no-cache' \
+         --header 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
+         --header 'postman-token: c9bfea4b-901f-9083-a979-7b34397e9491' \
+         --form 'query=mutation signIn($input: SignInInput!) { signIn(input: $input) { data { token, user { name } } } }' \
+         --form 'variables={ "input": { "email": "johndoe@test.com", "password": "123456"} }'
+         
+List requests where $TOKEN comes from Authenticate step above
+
+     curl --request POST \
+          --url http://172.17.0.3/graphql \
+          --header 'authorization: Token token=\"$TOKEN\"' \
+          --header 'cache-control: no-cache' \
+          --header 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
+          --header 'postman-token: e707ca42-f408-c989-d06b-233622971277' \
+          --form 'query=query MyQuery { requests { id, open, user { name }, comments { id, comment } } }'
 
 #### Codestyle
 
