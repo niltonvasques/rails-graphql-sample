@@ -13,6 +13,46 @@
 
 ## Requirements
 
+### Functional
+
+#### Customers
+
+* The user should be able to create customer accounts
+* The user should be able to authenticate in the system
+* The customer can create a request
+* The customer can add comments in your own requests
+* The customer can see their own requests (and cannot see requests created by others customers)
+* The agent can close own requests
+
+#### Agents
+
+* The agent can authenticate in the system
+* The agent cannot create a request
+* The agent can add comments in any request
+* The agent can generate reports that contains requests closed in last month (i.e last 30 days) in pdf format       
+* The agent can close any request
+
+#### Admins
+
+
+* The admin can authenticate in the system
+  - In web frontend the admin should be redirect to admin panel to manage system objects (requests and users)
+* The admin can generate reports that contains requests closed in last month (i.e last 30 days) in pdf format
+
+### Non Functional
+
+* Database: MySQL server
+* Backend: server framework Ruby on Rails on back end
+  - GraphQL API (~~REST API~~)
+  - Rspec
+  - Code style and quality tools (rubocop, brakeman, flay, fasterer)
+  - Coverage > 30% 
+* Frontend: React Native JS framework to build hybrid applications
+  - Single Page Application pattern with responsive design with React Native (JS) Framework
+  - Tests with Qunit/Jasmine/Karma.
+  
+* Secure the applications and services.
+
 ## Design Architecture
 
 #### High Level Architecture
@@ -25,7 +65,7 @@
 
 #### Data Model
 
-![Data model](https://github.com/niltonvasques/crossover-ticket-system/blob/docs/docs/Data%20Model.pdf)
+![Data model](https://github.com/niltonvasques/crossover-ticket-system/blob/docs/docs/Data%20Model.png)
 
 ## Setup
 
