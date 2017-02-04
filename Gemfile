@@ -63,6 +63,9 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
+  # Generate Data Model diagram
+  gem 'rails-erd'
+
   gem 'pronto'
   gem 'pronto-flay', require: false # Analyze code replication
   gem 'pronto-rubocop', require: false # Analyze code style and bad smells
