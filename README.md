@@ -3,7 +3,31 @@
 [![Build Status](http://drone.niltonvasques.com.br/api/badges/niltonvasques/pms-rails/status.svg)](http://drone.niltonvasques.com.br/niltonvasques/crossover-ticket-system)
 [![Coverage](https://img.shields.io/badge/coverage-97%25-brightgreen.svg)](https://img.shields.io/badge/coverage-97%25-brightgreen.svg)
 
-### Setup
+## Contents
+
+- [Requirements](#requirements)
+- [Design Architecture](#design-architecture)
+- [Setup](#setup)
+- [Code Style](#code-style)
+- [Screenshots](#screenshots)
+
+## Requirements
+
+## Design Architecture
+
+#### High Level Architecture
+
+![High Level Architecture](https://github.com/niltonvasques/crossover-ticket-system/blob/docs/docs/High%20Level%20Arquitecture.jpg)
+
+#### Frontend Architecture
+
+![Frontend Architecture](https://github.com/niltonvasques/crossover-ticket-system/blob/docs/docs/Frontend%20Arquitecture.jpg)
+
+#### Data Model
+
+![Data model](https://github.com/niltonvasques/crossover-ticket-system/blob/docs/docs/Data%20Model.pdf)
+
+## Setup
 
 #### Requirements
 
@@ -74,7 +98,7 @@ Create database if it still not exists and run migrations and seed.
     rake db:migrate
     rake db:seed
 
-#### Running tests
+## Running tests
 
   rspec
 
@@ -82,3 +106,12 @@ Create database if it still not exists and run migrations and seed.
 
 * [Ruby Code Style](https://github.com/bbatsov/ruby-style-guide#dont-hide-exceptions)
 * [Rubocop Defaults](https://github.com/bbatsov/rubocop/blob/master/config/enabled.yml)
+
+
+## Screenshots
+
+![Android Main scene](https://github.com/niltonvasques/crossover-ticket-system/blob/docs/docs/android%20main%20scene.png)
+![Web Main scene](https://github.com/niltonvasques/crossover-ticket-system/blob/docs/docs/web%20main%20scene.png)
+![Web Admin Panel](https://github.com/niltonvasques/crossover-ticket-system/blob/docs/docs/web%20admin%20panel.png)
+![Web Requests](https://github.com/niltonvasques/crossover-ticket-system/blob/docs/docs/admin%20request%203.png)
+
