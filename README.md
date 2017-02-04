@@ -149,12 +149,33 @@ REST API's has a lot of issues very well known, like the multi request problem, 
 rebuild the information stored on server through multiple REST resource routes. Thus, the main reason to adopt a GraphQL 
 Query instead a REST API approach, was because GraphQL has a very elegant way to handle and solve REST issues, and probably 
 will be the default "way to go" for next years in backend development. Another less strong reason was for learning purposes,
-give a try to this new technology through the challenge (increasing a little bit the efforts) and see the results.
+to give a try to this new technology through the challenge, increasing a little bit the efforts, but also allow get the hands
+dirty on the state of the art of backend JSON APIs and evaluate it.
 
 The whole architecture can be splited in three points, the database; the GraphQL rails application; the hybrid frontend app.
 The MySQL database was choosed because it was in the requirements of the challenge, but also for have a strong and smoothly
-integration with Rails and Active Record. The rails application was created using the new API mode (`--api`), that has a
-minimal stack of Rails modules focused in serving JSON responses.
+integration with Rails and Active Record. The rails application was created using the new **API mode** (`--api`), that has a
+minimal stack of Rails modules focused in serving JSON responses. The server has only one route, the **GraphQL Endpoint** 
+(`POST /graphql`), that receives all queries and mutations and delivery them to **GraphQL Schema**. This Schema is built
+using a declarative approach with `graphql-ruby gem`, and holds all possible queries (requests, users and report) and 
+mutations (create, remove and auth) of the application. The queries are intended to handle read only requests, whereas the
+mutations are responsible to change the data.
+
+The authorization mechanism was built by scratch, because the cannonical gems for that job (i.e. devise, clearance), not are
+built with focus on API mode only, and because that they have a lot of code using the html rendering stack of 
+a traditional rails app. Thus, the authorization approach used is very straightforward, and is done in two steps, a) sending
+a signIn mutation with user login (email, password); b) sending the auth token, that comes from signIn mutation, 
+through `Authorization HTTP Header` as we can see below.
+
+```
+POST /graphql?query=query MyQuery { requests { id, open, user { name }, comments { id, comment } } } HTTP/1.1
+Host: localhost:3000
+Authorization: Token token="3l1OxrFfTd_aygqD0Avtvg"
+Cache-Control: no-cache
+Postman-Token: 5c90cf63-83b1-4b5c-c2e3-db4bd7ebea52
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+```
+
 
 #### Frontend Architecture
 
