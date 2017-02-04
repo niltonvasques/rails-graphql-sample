@@ -53,6 +53,90 @@
   
 * Secure the applications and services.
 
+### Use cases
+
+* Use Case: Signup   
+  1. A non signed in user open the app
+  2. A non signed in user click in signup button
+  3. A non signed in user fills his personal information (name; email; password)
+  4. System create a new user and redirect to sign in page
+* Alternative: Missing information
+  - At step 4, when the user not fill some information
+  - System no create a new user and stay on signup page
+  
+* Use Case: Signin   
+  1. A non signed in user open the app
+  2. A non signed in user click in signin button
+  3. A non signed in user fills login information (email; password)
+  4. System redirect to main page
+* Alternative: Authorization failed
+  - At step 3, when the login information is wrong
+  - System display a error message
+  
+* Use Case: Signin   
+  1. A non signed in user open the app
+  2. A non signed in user click in signin button
+  3. A non signed in user fills login information (email; password)
+  4. System redirect to main page
+* Alternative: Authorization failed
+  - At step 3, when the login information is wrong
+  - System display a error message
+  
+* Use Case: Signin   
+  1. A non signed in user open the app
+  2. A non signed in user click in signin button
+  3. A non signed in user fills login information (email; password)
+  4. System redirect to requests page
+* Alternative: Authorization failed
+  - At step 3, when the login information is wrong
+  - System display a error message  
+* Alternative: Admin user
+  - At step 4, when the user is admin, redirect to admin panel
+  
+* Use Case: Requests page   
+  1. After Signin Use Case
+  2. User see their own requests and can create a new request 
+  3. User click in some request
+  4. User is redirect to request detail page
+* Alternative: Agent user
+  - At step 2, when the user is an agent, he see all requests
+  - Agent can't create a request
+  - Agent can also export a report with requests closed in last month  
+* Alternative: Admin user
+  - At step 2, when the user is an admin, he see all requests
+  - Admin can remove any requests
+  - Admin can't create a request
+  - Admin can also export a report with requests closed in last month 
+  
+* Use Case: Request detail page   
+  1. After user choose some request from Requests page
+  2. User see request informations (title, content)
+  3. User see request comments
+  4. User can add comments
+  5. User can close the request
+* Alternative: Request closed
+  - At step 5, when the request is closed, the user can't close it again
+  - User can't add comments
+  
+* Use Case: Admin panel  
+  1. After admin signin
+  2. Admin see a panel with options for manage users and requests
+  3. Admin click in users and is redirect to users manage page
+* Alternative: Manage requests
+  - At step 3, when the admin click in requests, he is redirect to requests page
+  
+* Use Case: Users page
+  1. After admin choose users options in Admin panel
+  2. Admin see a list with all users from system
+  3. Admin can remove any user
+* Alternative: Create agent
+  - At step 2, admin also see the fields to create a new agent
+  - Admin fills in those fields the new agent information
+  - System create a new agent
+* Alternative: Create agent failed because missing/invalid information
+  - When Admin fills wrong or missing information to create a new agent
+  - System not create a new agent and display a failure message
+
 ## Design Architecture
 
 #### High Level Architecture
