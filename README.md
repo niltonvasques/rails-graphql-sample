@@ -1,6 +1,6 @@
 # Ticket System Server
 
-[![Build Status](http://drone.niltonvasques.com.br/api/badges/niltonvasques/ticket-system/status.svg)](http://drone.niltonvasques.com.br/niltonvasques/ticket-system)
+[![Build Status](http://drone.niltonvasques.com.br/api/badges/niltonvasques/rails-graphql-sample/status.svg)](http://drone.niltonvasques.com.br/niltonvasques/rails-graphql-sample)
 [![Coverage](https://img.shields.io/badge/coverage-97%25-brightgreen.svg)](https://img.shields.io/badge/coverage-94%25-brightgreen.svg)
 
 ## Contents
