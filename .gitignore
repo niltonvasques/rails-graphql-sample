@@ -24,3 +24,4 @@ coverage/
 secrets.yml
 
 history
+*.orig
