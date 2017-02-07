@@ -21,7 +21,7 @@
 
 REST APIs have a lot of issues very well known, like the multi request problem, that is when a client application need
 rebuild the information stored on server through multiple REST resource routes. Thus, the main reason to adopt a GraphQL 
-Query instead a REST API approach, was because GraphQL has a very elegant way to handle and solve REST issues, and probably 
+Query instead a REST API approach, was because GraphQL has a very elegant way to handle and solve REST issues. The graphql probably 
 will be the default "way to go" for next years in backend development. Another less strong reason was for learning purposes,
 to give a try to this new technology through the challenge, increasing a little bit the efforts, but also allow get the hands
 dirty on the state of the art of backend JSON APIs and evaluate it.
