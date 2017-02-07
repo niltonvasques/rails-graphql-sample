@@ -1,7 +1,10 @@
-# Ticket System Server
+# Rails Graphql Sample 
+## Ticket System Server
 
 [![Build Status](http://drone.niltonvasques.com.br/api/badges/niltonvasques/rails-graphql-sample/status.svg)](http://drone.niltonvasques.com.br/niltonvasques/rails-graphql-sample)
 [![Coverage](https://img.shields.io/badge/coverage-97%25-brightgreen.svg)](https://img.shields.io/badge/coverage-94%25-brightgreen.svg)
+
+### [Client Project](https://github.com/niltonvasques/react-graphql-sample)
 
 ## Contents
 
