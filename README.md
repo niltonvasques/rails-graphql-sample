@@ -3,6 +3,7 @@
 
 [![Build Status](http://drone.niltonvasques.com.br/api/badges/niltonvasques/rails-graphql-sample/status.svg)](http://drone.niltonvasques.com.br/niltonvasques/rails-graphql-sample)
 [![Coverage](https://img.shields.io/badge/coverage-97%25-brightgreen.svg)](https://img.shields.io/badge/coverage-94%25-brightgreen.svg)
+[![Maintainability](https://api.codeclimate.com/v1/badges/1ab5de13a2072e685f6d/maintainability)](https://codeclimate.com/github/niltonvasques/rails-graphql-sample/maintainability)
 
 ### [Client Project](https://github.com/niltonvasques/react-graphql-sample)
 
